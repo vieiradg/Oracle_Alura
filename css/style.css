@@ -1,0 +1,153 @@
+:root {
+    --NavMainFooter: #F9F7F7;
+    --FontFundoBorda: #112D4E;
+    --Areatexto: #DBE2EF;
+    --corHover: #3F72AF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 1rem;
+    color: var(--FontFundoBorda);
+    background-color: var(--FontFundoBorda);
+    padding: 15px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 20px;
+}
+
+nav h1 {
+    color: var(--NavMainFooter);
+    font-size: 2.5rem;
+}
+
+nav .links {
+    display: flex;
+    position: absolute;
+    right: 50px;
+    gap: 40px;
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--NavMainFooter);
+    font-weight: bold;
+}
+
+.links a:hover {
+    border-bottom: solid 2px var(--NavMainFooter);
+}
+
+main {
+    border: 1px solid var(--FontFundoBorda);
+    border-radius: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    background-color: var(--NavMainFooter);
+    padding: 10px 0 40px 0;
+}
+
+.areaTexto1, .areaTexto2 {
+    border: 1px solid var(--FontFundoBorda);
+    border-radius: 25px;
+    background-color: var(--Areatexto);
+    overflow: auto;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 1);
+}
+
+.areaTexto1 {
+    width: 550px;
+    height: 400px;
+    margin: 20px 0;
+    padding: 10px;
+    outline: none; /* Remove o contorno padrão */
+}
+
+.areaTexto2 {
+    width: 400px;
+    height: 550px;
+    margin: 20px 0 20px 0;
+    padding: 10px;
+}
+
+.areaTexto1 p, .areaTexto2 p {
+    padding: 10px;
+}
+
+.botaoContainer {
+    display: flex;
+    gap: 30px;
+}
+
+.botao {
+    border: 1px solid var(--FontFundoBorda);
+    border-radius: 15px;
+    padding: 15px 30px;
+    background-color: var(--Areatexto);
+    color: var(--FontFundoBorda);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 1);
+}
+
+.botao:hover {
+    background-color: var(--corHover);
+    border: solid 2px var(--FontFundoBorda);
+}
+
+.footerContainer {
+    width: 100%;
+    margin-top: 20px;
+    border: 1px solid var(--FontFundoBorda);
+    border-radius: 15px;
+    background-color: var(--NavMainFooter);
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 1180px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav .imgContainer {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 1240px) {
+    main {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+    }
+
+    .areaTexto1, .areaTexto2 {
+        width: auto;
+    }
+}
+
+@media (max-width: 420px) {
+    .botao, .botaoContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+}
