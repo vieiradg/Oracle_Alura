@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Ferramenta para criptografia e descriptografia de textos">
     <link rel="stylesheet" href="css/style.css">
-    <title>Encriptador de Textos</title>
+    <title>Decodificador de Textos</title>
 </head>
 <body>
     <header>
@@ -26,7 +26,14 @@
     <main>
         <div class="container1">
             <div class="areaTexto1" contenteditable="true" id="inputText">
-                <p>Insira seu texto aqui</p>
+                <p>insira seu texto aqui</p>
+            </div>
+            <div class="avisos">
+                <ul>
+                    <li>Não é permitido números.</li>
+                    <li>Não é permitido caracteres especiais.</li>
+                    <li>Não é permitido letras maiúsculas.</li>
+                </ul>
             </div>
             <div class="botaoContainer">
                 <button class="botao" id="btnCriptografar">Criptografar</button>
@@ -35,7 +42,7 @@
         </div>
         <div class="container2">
             <div class="areaTexto2" id="outputText">
-                <p>Resultado</p>
+                <p>resultado</p>
             </div>
             <button class="botao" id="btnCopiar">Copiar</button>
         </div>

@@ -1,55 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const textInput = document.getElementById("inputText");
-    const textOutput = document.getElementById("outputText");
+    const btnCriptografar = document.getElementById('btnCriptografar');
+    const btnDescriptografar = document.getElementById('btnDescriptografar');
+    const btnCopiar = document.getElementById('btnCopiar');
 
-    function criptografar(texto) {
-        let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-        texto = texto.toLowerCase();
+    const inputText = document.getElementById('inputText');
+    const outputText = document.getElementById('outputText');
 
-        matrizCodigo.forEach(([char, code]) => {
-            texto = texto.replaceAll(char, code);
-        });
+    const happyImage = document.getElementById('happyImage');
+    const sadImage = document.getElementById('sadImage');
+    const happyMessage = document.getElementById('happyMessage');
+    const sadMessage = document.getElementById('sadMessage');
 
-        return texto;
+    function showFeedback(success) {
+        if (success) {
+            happyImage.style.display = 'block';
+            happyMessage.style.display = 'block';
+            sadImage.style.display = 'none';
+            sadMessage.style.display = 'none';
+        } else {
+            happyImage.style.display = 'none';
+            happyMessage.style.display = 'none';
+            sadImage.style.display = 'block';
+            sadMessage.style.display = 'block';
+        }
     }
 
-    function descriptografar(texto) {
-        let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-        texto = texto.toLowerCase();
-
-        matrizCodigo.forEach(([char, code]) => {
-            texto = texto.replaceAll(code, char);
-        });
-
-        return texto;
+    function encrypt(text) {
+        // Simulação de criptografia
+        return btoa(text);
     }
 
-    function copiarTexto() {
-        navigator.clipboard.writeText(textOutput.innerText)
-            .then(() => {
-                alert('Texto copiado com sucesso!');
-            })
-            .catch(err => {
-                console.error('Falha ao copiar:', err);
-                alert('Erro ao copiar o texto. Tente novamente.');
-            });
+    function decrypt(text) {
+        // Simulação de descriptografia
+        try {
+            return atob(text);
+        } catch (e) {
+            return null;
+        }
     }
 
-    document.getElementById("btnCriptografar").addEventListener("click", () => {
-        const textoCriptografado = criptografar(textInput.innerText);
-        textOutput.innerText = textoCriptografado;
-        textInput.innerText = "";
-        textOutput.classList.remove("hidden");
-        document.getElementById("btnCopiar").classList.remove("hidden");
+    btnCriptografar.addEventListener('click', () => {
+        const text = inputText.textContent.trim();
+        const encryptedText = encrypt(text);
+        if (encryptedText) {
+            outputText.textContent = encryptedText;
+            showFeedback(true);
+        } else {
+            showFeedback(false);
+        }
     });
 
-    document.getElementById("btnDescriptografar").addEventListener("click", () => {
-        const textoDescriptografado = descriptografar(textInput.innerText);
-        textOutput.innerText = textoDescriptografado;
-        textInput.innerText = "";
-        textOutput.classList.remove("hidden");
-        document.getElementById("btnCopiar").classList.remove("hidden");
+    btnDescriptografar.addEventListener('click', () => {
+        const text = outputText.textContent.trim();
+        const decryptedText = decrypt(text);
+        if (decryptedText !== null) {
+            inputText.textContent = decryptedText;
+            showFeedback(true);
+        } else {
+            showFeedback(false);
+        }
     });
 
-    document.getElementById("btnCopiar").addEventListener("click", copiarTexto);
+    btnCopiar.addEventListener('click', () => {
+        const text = outputText.textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Texto copiado para a área de transferência!');
+        }).catch(() => {
+            alert('Falha ao copiar o texto.');
+        });
+    });
+
+    // Restringe caracteres especiais e letras maiúsculas em inputText
+    inputText.addEventListener('input', (event) => {
+        // Remove caracteres não permitidos
+        let value = event.target.textContent;
+        value = value.replace(/[^a-z\s]/g, ''); // Permite apenas letras minúsculas e espaços
+        event.target.textContent = value;
+    });
+
+    // Inicializa o valor de inputText para garantir que começa com texto válido
+    inputText.textContent = inputText.textContent.replace(/[^a-z\s]/g, '');
 });
