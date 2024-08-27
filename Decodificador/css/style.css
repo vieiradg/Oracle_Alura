@@ -173,7 +173,7 @@ main {
     }
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1260px) {
     /* Ajusta o layout para telas menores (computadores portáteis) */
     main {
         box-sizing: border-box;
@@ -183,11 +183,11 @@ main {
     }
 
     .areaTexto1, .areaTexto2 {
-        width: auto; /* Ajusta a largura das áreas de texto */
+        width: 100%; /* Ajusta a largura das áreas de texto */
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 560px) {
     /* Ajusta o layout para telas menores (celulares) */
     .botao, .botaoContainer {
         display: flex;
