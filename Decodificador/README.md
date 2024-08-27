@@ -19,7 +19,7 @@ Bem-vindo ao **Descodificador de Texto**! Este projeto permite a criptografia e 
 ## Como Usar
 
 1. **Acesse a Página:**
-   - Clique [aqui](https://vieiradg.github.io/Curso_Oracle_Alura/Decodificador) para acessar a página da aplicação.
+   - Clique [aqui](https://vieiradg.github.io/Oracle_Alura/Decodificador/) para acessar a página da aplicação.
 
 2. **Inserir Texto:**
    - No campo de entrada, insira o texto que deseja criptografar ou descriptografar.
