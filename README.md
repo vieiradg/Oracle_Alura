@@ -1,2 +1,2 @@
-# Dev_Media
+# Alura + Oracle Next Education
  Projetos e exercícios.
