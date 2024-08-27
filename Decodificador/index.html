@@ -1,57 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Ferramenta para criptografia e descriptografia de textos">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Decodificador de Textos</title>
+    <!-- Configurações básicas do documento -->
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura a visualização em dispositivos móveis -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Garante compatibilidade com versões mais recentes do IE -->
+    <meta name="Encriptador" content="Venha decodificar seu texto aqui!"> <!-- Metadado personalizado -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Link para o arquivo de estilo CSS -->
+    <title>Encriptador de textos</title> <!-- Título da página exibido na aba do navegador -->
 </head>
 <body>
     <header>
+        <!-- Seção do cabeçalho com navegação -->
         <nav>
             <div class="imgContainer">
-                <img src="assets/logo.png" alt="Imagem do logo" width="150px">
+                <!-- Container para a imagem de logo -->
+                <img src="assets/logo.png" alt="Logo" width="150px"> <!-- Logo da página -->
             </div>
-            <h1>Decodificador de Textos</h1>
+            <h1>Decodificador de textos</h1> <!-- Título principal da navegação -->
             <div class="links">
+                <!-- Links de navegação -->
                 <a href="https://github.com/vieiradg" target="_blank">Github</a>
                 <a href="https://www.linkedin.com/in/vieiradg/" target="_blank">Linkedin</a>
-                <a href="mailto:diegorusty40@gmail.com" target="_blank">Entre em Contato</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=diegorusty40@gmail.com" target="_blank">Entre em contato</a>
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- Seção principal da página -->
         <div class="container1">
-            <div class="areaTexto1" contenteditable="true" id="inputText">
-                <p>insira seu texto aqui</p>
-            </div>
-            <div class="avisos">
-                <ul>
+            <!-- Container para a área de entrada de texto e botões -->
+            <textarea class="areaTexto1" placeholder="Digite seu texto aqui" pattern="[a-z\s]+"></textarea>
+            <!-- Área de texto para o usuário digitar o texto a ser criptografado/descriptografado -->
+
+            <div>
+                <ul class="aviso">
+                    <!-- Lista de avisos para o usuário -->
                     <li>Não é permitido números.</li>
                     <li>Não é permitido caracteres especiais.</li>
-                    <li>Não é permitido letras maiúsculas.</li>
+                    <li>Não é permitido letras maiúsculas</li>
                 </ul>
             </div>
             <div class="botaoContainer">
-                <button class="botao" id="btnCriptografar">Criptografar</button>
-                <button class="botao" id="btnDescriptografar">Descriptografar</button>
+                <!-- Container para os botões de ação -->
+                <a class="botao" id="btnCriptografar">Criptografar</a>
+                <a class="botao" id="btnDescriptografar">Descriptografar</a>
+                <a class="botao" id="btnLimpar">Limpar</a>
             </div>
         </div>
         <div class="container2">
-            <div class="areaTexto2" id="outputText">
-                <p>resultado</p>
+            <!-- Container para a área de resultado e botão de copiar -->
+            <div class="areaTexto2">
+                <!-- Área de texto para exibir o resultado -->
+                <p>Resultado</p>
             </div>
-            <button class="botao" id="btnCopiar">Copiar</button>
+            <a class="botao" id="btnCopiar">Copiar</a> <!-- Botão para copiar o texto do resultado -->
         </div>
     </main>
     <footer>
+        <!-- Seção do rodapé -->
         <div class="footerContainer">
-            <p>Desenvolvido por Diego Vieira</p>
+            <p>Desenvolvido por Diego Vieira</p> <!-- Créditos do desenvolvedor -->
         </div>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="js/script.js"></script> <!-- Link para o arquivo JavaScript -->
 </body>
 </html>

@@ -1,83 +1,116 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const btnCriptografar = document.getElementById('btnCriptografar');
-    const btnDescriptografar = document.getElementById('btnDescriptografar');
-    const btnCopiar = document.getElementById('btnCopiar');
+    // Pegando os elementos necessários
+    const textInput = document.querySelector(".areaTexto1"); 
+    const textOutput = document.querySelector(".areaTexto2 p");
+    const btnCriptografar = document.getElementById("btnCriptografar");
+    const btnDescriptografar = document.getElementById("btnDescriptografar");
+    const btnCopiar = document.getElementById("btnCopiar");
+    const btnLimpar = document.getElementById("btnLimpar");
 
-    const inputText = document.getElementById('inputText');
-    const outputText = document.getElementById('outputText');
-
-    const happyImage = document.getElementById('happyImage');
-    const sadImage = document.getElementById('sadImage');
-    const happyMessage = document.getElementById('happyMessage');
-    const sadMessage = document.getElementById('sadMessage');
-
-    function showFeedback(success) {
-        if (success) {
-            happyImage.style.display = 'block';
-            happyMessage.style.display = 'block';
-            sadImage.style.display = 'none';
-            sadMessage.style.display = 'none';
-        } else {
-            happyImage.style.display = 'none';
-            happyMessage.style.display = 'none';
-            sadImage.style.display = 'block';
-            sadMessage.style.display = 'block';
-        }
+    // Função para verificar se o texto só tem letras minúsculas e espaços
+    function validarTexto(texto) {
+        const regex = /^[a-z\s]+$/;
+        return regex.test(texto);
     }
 
-    function encrypt(text) {
-        // Simulação de criptografia
-        return btoa(text);
+    // Quando clicar em "Criptografar"
+    function btnCriptografarHandler() {
+        const texto = textInput.value;
+        if (!validarTexto(texto)) {
+            alert("Por favor, insira apenas letras minúsculas e espaços.");
+            return;
+        }
+        const textoCriptografado = criptografar(texto);
+        textOutput.textContent = textoCriptografado;
+
+        // Esconde a imagem e as mensagens de aviso
+        const imagem = document.querySelector(".imagem-menino");
+        const mensagemAdvertencia = document.querySelector(".mensagem-advertencia");
+        const mensagemInfo = document.querySelector(".mensagem-info");
+        if (imagem) imagem.classList.add("hidden");
+        if (mensagemAdvertencia) mensagemAdvertencia.classList.add("hidden");
+        if (mensagemInfo) mensagemInfo.classList.add("hidden");
+
+        // Mostra o resultado e os botões
+        textOutput.classList.remove("hidden");
+        btnCopiar.classList.remove("hidden");
+        btnLimpar.classList.remove("hidden");
     }
 
-    function decrypt(text) {
-        // Simulação de descriptografia
-        try {
-            return atob(text);
-        } catch (e) {
-            return null;
+    // Criptografa o texto
+    function criptografar(stringCriptografada) {
+        let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
+        stringCriptografada = stringCriptografada.toLowerCase();
+
+        // Troca cada vogal pelo seu código correspondente
+        for (let i = 0; i < matrizCodigo.length; i++) {
+            if (stringCriptografada.includes(matrizCodigo[i][0])) {
+                stringCriptografada = stringCriptografada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
+            }
         }
+
+        return stringCriptografada;
     }
 
-    btnCriptografar.addEventListener('click', () => {
-        const text = inputText.textContent.trim();
-        const encryptedText = encrypt(text);
-        if (encryptedText) {
-            outputText.textContent = encryptedText;
-            showFeedback(true);
-        } else {
-            showFeedback(false);
+    // Quando clicar em "Descriptografar"
+    function btnDescriptografarHandler() {
+        const texto = textInput.value;
+        if (!validarTexto(texto)) {
+            alert("Por favor, insira apenas letras minúsculas e espaços.");
+            return;
         }
-    });
+        const textoDescriptografado = descriptografar(texto);
+        textOutput.textContent = textoDescriptografado;
 
-    btnDescriptografar.addEventListener('click', () => {
-        const text = outputText.textContent.trim();
-        const decryptedText = decrypt(text);
-        if (decryptedText !== null) {
-            inputText.textContent = decryptedText;
-            showFeedback(true);
-        } else {
-            showFeedback(false);
+        // Mostra o resultado e os botões
+        textOutput.classList.remove("hidden");
+        btnCopiar.classList.remove("hidden");
+        btnLimpar.classList.remove("hidden");
+    }
+
+    // Descriptografa o texto
+    function descriptografar(stringDescriptografada) {
+        let matrizCodigo = [["enter", "e"], ["imes", "i"], ["ai", "a"], ["ober", "o"], ["ufat", "u"]];
+        stringDescriptografada = stringDescriptografada.toLowerCase();
+
+        // Troca cada código pela sua vogal original
+        for (let i = 0; i < matrizCodigo.length; i++) {
+            if (stringDescriptografada.includes(matrizCodigo[i][0])) {
+                stringDescriptografada = stringDescriptografada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
+            }
         }
-    });
 
-    btnCopiar.addEventListener('click', () => {
-        const text = outputText.textContent.trim();
-        navigator.clipboard.writeText(text).then(() => {
-            alert('Texto copiado para a área de transferência!');
-        }).catch(() => {
-            alert('Falha ao copiar o texto.');
-        });
-    });
+        return stringDescriptografada;
+    }
 
-    // Restringe caracteres especiais e letras maiúsculas em inputText
-    inputText.addEventListener('input', (event) => {
-        // Remove caracteres não permitidos
-        let value = event.target.textContent;
-        value = value.replace(/[^a-z\s]/g, ''); // Permite apenas letras minúsculas e espaços
-        event.target.textContent = value;
-    });
+    // Quando clicar em "Copiar"
+    function btnCopiarHandler() {
+        const texto = textOutput.textContent;
+        navigator.clipboard.writeText(texto)
+            .then(() => alert("Texto copiado com sucesso!"))
+            .catch(() => alert("Erro ao copiar o texto."));
+    }
 
-    // Inicializa o valor de inputText para garantir que começa com texto válido
-    inputText.textContent = inputText.textContent.replace(/[^a-z\s]/g, '');
+    // Quando clicar em "Limpar"
+    function btnLimparHandler() {
+        textInput.value = "";
+        textOutput.textContent = "Resultado";
+        textOutput.classList.add("hidden");
+        btnCopiar.classList.add("hidden");
+        btnLimpar.classList.add("hidden");
+
+        // Mostra a imagem e as mensagens de aviso de novo
+        const imagem = document.querySelector(".imagem-menino");
+        const mensagemAdvertencia = document.querySelector(".mensagem-advertencia");
+        const mensagemInfo = document.querySelector(".mensagem-info");
+        if (imagem) imagem.classList.remove("hidden");
+        if (mensagemAdvertencia) mensagemAdvertencia.classList.remove("hidden");
+        if (mensagemInfo) mensagemInfo.classList.remove("hidden");
+    }
+
+    // Ligando as funções aos botões
+    btnCriptografar.addEventListener("click", btnCriptografarHandler);
+    btnDescriptografar.addEventListener("click", btnDescriptografarHandler);
+    btnCopiar.addEventListener("click", btnCopiarHandler);
+    btnLimpar.addEventListener("click", btnLimparHandler);
 });
