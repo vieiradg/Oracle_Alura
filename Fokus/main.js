@@ -14,10 +14,10 @@ const trocarImgBt = document.querySelector('.app__card-primary-button-icon')
 const tempoNaTela = document.querySelector('#timer')
 const reiniciarTempo = document.querySelector('.app__card-secundary-button')
 
-const musica = new Audio('/sons/lofi.mp3')
-const comecar = new Audio('/sons/play.wav')
-const pausar = new Audio('/sons/pause.mp3')
-const terminar = new Audio('/sons/beep.mp3')
+const musica = new Audio('./sons/lofi.mp3')
+const comecar = new Audio('./sons/play.wav')
+const pausar = new Audio('./sons/pause.mp3')
+const terminar = new Audio('./sons/beep.mp3')
 
 const modal = document.getElementById("modal");
 const closeBt = document.querySelector(".close");
