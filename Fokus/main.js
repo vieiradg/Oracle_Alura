@@ -14,10 +14,10 @@ const trocarImgBt = document.querySelector('.app__card-primary-button-icon')
 const tempoNaTela = document.querySelector('#timer')
 const reiniciarTempo = document.querySelector('.app__card-secundary-button')
 
-const musica = new Audio('../sons/lofi.mp3')
-const comecar = new Audio('../sons/play.wav')
-const pausar = new Audio('../sons/pause.mp3')
-const terminar = new Audio('../sons/beep.mp3')
+const musica = new Audio('/Oracle_Alura/Fokus/sons/lofi.mp3')
+const comecar = new Audio('/Oracle_Alura/Fokus/sons/play.wav')
+const pausar = new Audio('/Oracle_Alura/Fokus/sons/pause.mp3')
+const terminar = new Audio('/Oracle_Alura/Fokus/sons/beep.mp3')
 
 const modal = document.getElementById("modal");
 const closeBt = document.querySelector(".close");
@@ -61,7 +61,7 @@ function alterarContexto(contexto) {
     })
 
     html.setAttribute('data-contexto', contexto)
-    banner.setAttribute('src', `../assets/${contexto}.png`)
+    banner.setAttribute('src', `/Oracle_Alura/Fokus/assets/${contexto}.png`)
 
    switch (contexto) {
     case "foco":
@@ -109,13 +109,13 @@ function iniciarOuPausar() {
     comecar.play()
     intervaloId = setInterval(contagemRegressiva, 1000)
     iniciarOuPausarBt.textContent = "Pausar"
-    trocarImgBt.setAttribute('src', '../assets/pause.png')
+    trocarImgBt.setAttribute('src', '/Oracle_Alura/Fokus/assets/pause.png')
 }
 
 function zerar() {
     clearInterval(intervaloId)
     iniciarOuPausarBt.textContent = "Começar"
-    trocarImgBt.setAttribute('src', '../assets/play_arrow.png')
+    trocarImgBt.setAttribute('src', '/Oracle_Alura/Fokus/assets/play_arrow.png')
     intervaloId = null
 }
 
