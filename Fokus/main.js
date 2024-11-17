@@ -109,13 +109,13 @@ function iniciarOuPausar() {
     comecar.play()
     intervaloId = setInterval(contagemRegressiva, 1000)
     iniciarOuPausarBt.textContent = "Pausar"
-    trocarImgBt.setAttribute('src', '/assets/pause.png')
+    trocarImgBt.setAttribute('src', 'assets/pause.png')
 }
 
 function zerar() {
     clearInterval(intervaloId)
     iniciarOuPausarBt.textContent = "Começar"
-    trocarImgBt.setAttribute('src', '/assets/play_arrow.png')
+    trocarImgBt.setAttribute('src', 'assets/play_arrow.png')
     intervaloId = null
 }
 
