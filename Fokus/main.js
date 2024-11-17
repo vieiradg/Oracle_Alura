@@ -61,7 +61,7 @@ function alterarContexto(contexto) {
     })
 
     html.setAttribute('data-contexto', contexto)
-    banner.setAttribute('src', `../assets/${contexto}.png`)
+    banner.setAttribute('src', `./assets/${contexto}.png`)
 
    switch (contexto) {
     case "foco":
