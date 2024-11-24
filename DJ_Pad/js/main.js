@@ -3,10 +3,11 @@
 function tocaSom (idAudio) {
     const elemento = document.querySelector(idAudio)
 
-    if (elemento && elemento.localName === 'Audio') {
+    if (elemento && elemento.localName === 'audio') {
         elemento.play()
+        console.log('Tocando o som:', idAudio); // Log para verificar o ID passado
     }else {
-        console.log("Elemeno não encontrado ou seletor invalido")
+        console.log("Elemento não encontrado ou seletor invalido")
     }
 }
 
